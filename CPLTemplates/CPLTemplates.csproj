@@ -8,9 +8,12 @@
 	<PackageId>BizSpeed.CPLTemplates</PackageId>
 	<PackageVersion>1.0</PackageVersion>
 	<Authors>BizSpeed</Authors>
-	<Copyright>2020</Copyright>
+	<Copyright>BizSpeed. Inc.</Copyright>
 	<Owners>BizSpeed, Inc.</Owners>
 	<PackageProjectUrl>https://github.com/bizspeed/BizSpeed.CPLTemplates</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/bizspeed/BizSpeed.CPLTemplates.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<Title>BizSpeed.CPLTemplates</Title>
 	<Description>Library to translate from XML to CPCL</Description>
   </PropertyGroup>
