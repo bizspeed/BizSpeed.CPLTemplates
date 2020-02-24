@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<RootNamespace>BizSpeed.CPLTemplates</RootNamespace>
+	<PackOnBuild>true</PackOnBuild>
+	<PackageId>BizSpeed.CPLTemplates</PackageId>
+	<PackageVersion>1.0</PackageVersion>
+	<Authors>BizSpeed</Authors>
+	<Copyright>2020</Copyright>
+	<Owners>BizSpeed, Inc.</Owners>
+	<PackageProjectUrl>https://github.com/bizspeed/BizSpeed.CPLTemplates</PackageProjectUrl>
+	<Title>BizSpeed.CPLTemplates</Title>
+	<Description>Library to translate from XML to CPCL</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseAndroidTest|AnyCPU' ">
+    <IntermediateOutputPath>obj\Release\netstandard2.0</IntermediateOutputPath>
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\ReleaseAndroidTest\netstandard2.0</OutputPath>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile></DocumentationFile>
+    <NoWarn>1701;1702</NoWarn>
+    <NoStdLib>true</NoStdLib>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="XmlToCPCL.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XmlToCPCL.xsd" />
+  </ItemGroup>
+</Project>

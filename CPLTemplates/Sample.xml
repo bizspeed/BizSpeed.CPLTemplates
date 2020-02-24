@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<doc>
+    <logo />
+	<h1>This is a heading</h1>
+
+	<!-- 
+		The section and cell elements are containers for formatted text
+		A carriage return will be appended to the text within the section element 
+		Text within a section element must be contained within a parent element
+		such as text or b -->
+	<section>
+		<text>This is text using the default font.</text>
+		<b>This is text using a bold font</b>
+	</section>
+
+	<br />
+
+	<line width="800" />
+
+	<grid>
+		<columns>
+			<column width="100" />
+			<column width="100" />
+		</columns>
+
+		<rows>
+			<row>
+				<cell colspan="2"> <!-- Cells can only contain a single element.  All others will be ignored -->
+					<b>Header 1</b>
+				</cell>
+				<cell>
+					<b>Header 2</b>
+				</cell>
+			</row>
+
+			<row>
+				<cell>
+					<text>Value 1</text>
+				</cell>
+				<cell>
+					Value 2
+				</cell>
+			</row>
+		</rows>
+	</grid>
+</doc>
