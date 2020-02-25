@@ -98,7 +98,7 @@ This tag will emit a "line" of characters
 This tag will emit a simple tabular output to assist in performing some amount of controlled layout. The width attribute in the `<column />` element is expressed in characters. The content in the `<cell />` tag can be one of
 * `<text />`
 * `<b />`
-* `<line />'
-* `<textline />
+* `<line />`
+* `<textline />`
 
 The colspan attribute of the `<cell />` element will stretch to the right as in HTML.
