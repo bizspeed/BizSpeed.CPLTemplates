@@ -113,7 +113,7 @@ namespace BizSpeed.CPLTemplates
 
                 if (elementName == "text")
                 {
-                    sb.Append(element.Value);
+                    sb.Append(WebUtility.HtmlDecode(element.Value));
                     continue;
                 }
 
@@ -185,12 +185,12 @@ namespace BizSpeed.CPLTemplates
             LEFT_MARGIN = DEFAULT_LEFT_MARGIN;
 
             // TODO: Uncomment if "scaling" font to fit smaller page
-            if (pageWidth == 3)
-            {
-                DEFAULT_FONT = "! U1 SETLP 0 0 9";
-                H1_FONT = "! U1 SETLP 7 0 24";
-                DEFAULT_FONT_WIDTH_IN_DOTS = 8;
-            }
+            //if (pageWidth == 3)
+            //{
+            //    DEFAULT_FONT = "! U1 SETLP 0 0 9";
+            //    H1_FONT = "! U1 SETLP 7 0 24";
+            //    DEFAULT_FONT_WIDTH_IN_DOTS = 8;
+            //}
 
             MAX_CHARACTERS = Convert.ToInt32(Math.Floor(((pageWidth * 203) - LEFT_MARGIN) / DEFAULT_FONT_WIDTH_IN_DOTS));
         }
@@ -605,6 +605,11 @@ namespace BizSpeed.CPLTemplates
                         {
                             sb.Append(WriteLine(lineWidth));
                             continue;
+                        }
+
+                        if (childElement.Name=="textline")
+                        {
+                            sb.Append(WriteTextLine(width, childElement.Attribute("character")?.Value ?? "-"));
                         }
                     }
                 }
