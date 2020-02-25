@@ -1,83 +1,72 @@
 ﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="doc">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element type="xs:string" name="h1"/>
-        <xs:element name="logo" />
-        <xs:element name="signature">
-            <xs:complexType>
-                <xs:simpleContent>
-                    <xs:extension base="xs:string">
-                        <xs:attribute type="xs:string" name="orderid" />
-                    </xs:extension>
-                </xs:simpleContent>
-            </xs:complexType>
-        </xs:element>
-        <xs:element name="p">
-          <xs:annotation>
-            <xs:documentation>The p and cell elements are containers for formatted text
-		A carriage return will be appended to the text within the p element</xs:documentation>
-          </xs:annotation>
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element type="xs:string" name="text"/>
-              <xs:element type="xs:string" name="b"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element type="xs:string" name="br"/>
-        <xs:element name="line">
-          <xs:complexType>
-            <xs:simpleContent>
-              <xs:extension base="xs:string">
-                <xs:attribute type="xs:short" name="width"/>
-              </xs:extension>
-            </xs:simpleContent>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="grid">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="columns">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="column" maxOccurs="unbounded" minOccurs="0">
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:string">
-                            <xs:attribute type="xs:byte" name="width" use="optional"/>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="rows">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="row" maxOccurs="unbounded" minOccurs="0">
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="cell" maxOccurs="unbounded" minOccurs="0">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element type="xs:string" name="b" minOccurs="0"/>
-                                    <xs:element type="xs:string" name="text" minOccurs="0"/>
-                                </xs:sequence>
-                                <xs:attribute type="xs:short" name="colspan" />
-                            </xs:complexType>
-                          </xs:element>
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
+    <xs:complexType name="textlineType">
+        <xs:attribute type="xs:string" name="character" use="optional" />
+        <xs:attribute type="xs:short" name="width" use="optional" />    
     </xs:complexType>
-  </xs:element>
+    <xs:complexType name="lineType">
+        <xs:attribute type="xs:short" name="width" use="optional" />
+    </xs:complexType>
+    <xs:complexType name="sectionType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element type="xs:string" name="text" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element type="xs:string" name="b" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element type="xs:string" name="br" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element type="xs:string" name="h1" minOccurs="0" maxOccurs="unbounded" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="imgType">
+        <xs:attribute name="source" type="xs:string" use="required" />
+        <xs:attribute name="align" type="xs:string" use="optional" />
+        <xs:attribute name="width" type="xs:short" use="optional" />
+    </xs:complexType>
+    <xs:complexType name="cellType">
+        <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:element type="xs:string" name="b"/>
+            <xs:element type="lineType" name="line"/>
+            <xs:element type="xs:string" name="text"/>
+            <xs:element type="textlineType" name="textline"/>
+        </xs:choice>
+        <xs:attribute type="xs:short" name="colspan" use="optional" />
+    </xs:complexType>
+    <xs:complexType name="rowType">
+        <xs:sequence>
+            <xs:element type="cellType" name="cell" maxOccurs="unbounded" minOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="columnType">
+        <xs:attribute type="xs:byte" name="width" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="gridType">
+        <xs:sequence>
+            <xs:element name="columns">
+                <xs:complexType>
+                <xs:sequence maxOccurs="unbounded" minOccurs="1">
+                    <xs:element type="columnType" name="column" />
+                </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="rows">
+                <xs:complexType>
+                <xs:sequence maxOccurs="unbounded" minOccurs="1">
+                    <xs:element type="rowType" name="row" />
+                </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="doc">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element type="imgType" name="img" />
+                <xs:element type="lineType" name="line" />
+                <xs:element type="textlineType" name="textline" />
+                <xs:element type="sectionType" name="section" />
+                <xs:element type="gridType" name="grid" />
+                <xs:element type="xs:string" name="b" />
+                <xs:element type="xs:string" name="br" />
+                <xs:element type="xs:string" name="h1" />
+                <xs:element type="xs:string" name="text" />
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
