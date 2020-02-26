@@ -334,7 +334,7 @@ namespace BizSpeed.CPLTemplates
         private XmlSchemaSet GetSchemas()
         {
             var schemas = new XmlSchemaSet();
-            var schemaString = LoadTemplateFromEmbeddedResource("CPLTemplates.XmlToCPCL.xsd");
+            var schemaString = LoadTemplateFromEmbeddedResource("BizSpeed.CPLTemplates.XmlToCPCL.xsd");
             schemas.Add("", XmlReader.Create(new StringReader(schemaString)));
             return schemas;
         }
