@@ -592,22 +592,16 @@ namespace BizSpeed.CPLTemplates
                         if (childElement.Name == "text")
                         {
                             sb.Append(WritePaddedText(childElement.Value, width, align));
-                            continue;
                         }
-
-                        if (childElement.Name == "b")
+                        else if (childElement.Name == "b")
                         {
                             sb.Append(WriteB(childElement.Value, width, align));
-                            continue;
                         }
-
-                        if (childElement.Name == "line")
+                        else if (childElement.Name == "line")
                         {
                             sb.Append(WriteLine(lineWidth));
-                            continue;
                         }
-
-                        if (childElement.Name=="textline")
+                        else if (childElement.Name=="textline")
                         {
                             sb.Append(WriteTextLine(width, childElement.Attribute("character")?.Value ?? "-"));
                         }
