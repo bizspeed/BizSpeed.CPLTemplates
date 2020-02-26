@@ -19,7 +19,7 @@
         <xs:attribute name="align" type="xs:string" use="optional" />
         <xs:attribute name="width" type="xs:short" use="optional" />
     </xs:complexType>
-    <xs:complexType name="cellType">
+    <xs:complexType name="cellType" mixed="true">
         <xs:choice minOccurs="0" maxOccurs="1">
             <xs:element type="xs:string" name="b"/>
             <xs:element type="lineType" name="line"/>
