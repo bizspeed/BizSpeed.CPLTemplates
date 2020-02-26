@@ -42,8 +42,8 @@ namespace BizSpeed.CPLTemplates
 
             XDocument xmlDoc = XDocument.Load(new StringReader(cleanedXml), LoadOptions.None);
 
-            //if (!ValidateXml(xmlDoc, out string validationMessage))
-            //    throw new FormatException(validationMessage);
+            if (!ValidateXml(xmlDoc, out string validationMessage))
+                throw new FormatException(validationMessage);
 
             Debug.WriteLine("Print XML: {0}", xmlDoc.ToString());
             var sb = new StringBuilder();
