@@ -16,7 +16,7 @@ namespace BizSpeed.CPLTemplates
 {
     public class XmlToCPLParser : ICPLTranslator
     {
-        private readonly string CR = " \r\n";
+        private readonly string CR = "\r\n";
         private readonly int DEFAULT_PAGE_WIDTH = 4;
         private string DEFAULT_FONT = "! U1 SETLP 7 0 24";
         private string H1_FONT = "! U1 SETLP 4 0 47";
@@ -414,7 +414,7 @@ namespace BizSpeed.CPLTemplates
 
             var sb = new StringBuilder("! U1 SETBOLD 2").Append(CR);
             sb.Append(cleanText);
-            sb.Append("! U1 SETBOLD 0").Append(CR);
+            sb.Append(" ! U1 SETBOLD 0").Append(CR);
             return sb.ToString();
         }
 
