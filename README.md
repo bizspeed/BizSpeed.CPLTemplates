@@ -3,7 +3,7 @@
 ## Document Schema
 ### doc
 ```xml
-<doc [width="x"]>
+<doc [pagewidth="x"]>
 ...
 </doc>
 ```
