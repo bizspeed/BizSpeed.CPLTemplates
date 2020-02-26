@@ -21,7 +21,7 @@ namespace BizSpeed.CPLTemplates
         private string DEFAULT_FONT = "! U1 SETLP 7 0 24";
         private string H1_FONT = "! U1 SETLP 4 0 47";
         private decimal DEFAULT_FONT_WIDTH_IN_DOTS = 12;
-        private readonly int DEFAULT_LEFT_MARGIN = 30;
+        private readonly int DEFAULT_LEFT_MARGIN = 20;
         private int LEFT_MARGIN;
         private int PAGE_WIDTH;
         int MAX_CHARACTERS;
@@ -204,7 +204,7 @@ namespace BizSpeed.CPLTemplates
         /// <returns></returns>
         private string WriteImage(byte[] imageData, string align, double width)
         {
-            var imageWidthInPixels = ((PAGE_WIDTH * 203 - LEFT_MARGIN - 60) * width);
+            var imageWidthInPixels = ((PAGE_WIDTH * 203 - LEFT_MARGIN - 60) * width) * .95;
 
             return GenerateImageString(imageData, align, Convert.ToInt32(imageWidthInPixels));
         }
