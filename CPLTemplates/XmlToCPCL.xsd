@@ -68,6 +68,7 @@
                 <xs:element type="xs:string" name="h1" />
                 <xs:element type="xs:string" name="text" />
             </xs:choice>
+            <xs:attribute type="xs:short" name="pagewidth" use="optional" />
         </xs:complexType>
     </xs:element>
 </xs:schema>
