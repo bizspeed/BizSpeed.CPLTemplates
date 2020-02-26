@@ -6,7 +6,7 @@
 	<RootNamespace>BizSpeed.CPLTemplates</RootNamespace>
 	<PackOnBuild>true</PackOnBuild>
 	<PackageId>BizSpeed.CPLTemplates</PackageId>
-	<PackageVersion>1.2.3</PackageVersion>
+	<PackageVersion>1.2.4</PackageVersion>
 	<Authors>BizSpeed</Authors>
 	<Copyright>BizSpeed. Inc.</Copyright>
 	<Owners>BizSpeed, Inc.</Owners>
