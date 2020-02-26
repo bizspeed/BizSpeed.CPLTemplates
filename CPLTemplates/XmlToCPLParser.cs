@@ -231,7 +231,7 @@ namespace BizSpeed.CPLTemplates
 
                 if (align == "center")
                 {
-                    x = Convert.ToInt32(Math.Round((((PAGE_WIDTH - LEFT_MARGIN - 60) * 203f) - bitmap.Width) / 2, 0) + LEFT_MARGIN);
+                    x = Convert.ToInt32(Math.Round(((PAGE_WIDTH * 203f) - LEFT_MARGIN - 60 - bitmap.Width) / 2, 0) + LEFT_MARGIN);
                 }
 
                 printCommand.Append($"EG {bitmapWidth / 8} {bitmap.Height} {x} 0 ");
