@@ -10,7 +10,7 @@
     <grid>
         <columns>
             <column width="18" />
-            <column width="30" />
+            <column width="28" />
         </columns>
         <rows>
             <row>
@@ -52,10 +52,11 @@
         </rows>
     </grid>
     <br />
+    <br/>
     <grid>
         <columns>
             <column width="18" />
-            <column width="30" />
+            <column width="28" />
         </columns>
         <rows>
             <row>
@@ -85,10 +86,11 @@
         </rows>
     </grid>
     <br />
+    <br />
     <grid>
         <columns>
             <column width="18" />
-            <column width="30" />
+            <column width="28" />
         </columns>
         <rows>
             <row>
