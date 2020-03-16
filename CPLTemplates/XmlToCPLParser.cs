@@ -189,7 +189,7 @@ namespace BizSpeed.CPLTemplates
             //    DEFAULT_FONT_WIDTH_IN_DOTS = 8;
             //}
 
-            MAX_CHARACTERS = Convert.ToInt32(Math.Floor((pageWidth * 203) / DEFAULT_FONT_WIDTH_IN_DOTS));
+            MAX_CHARACTERS = Convert.ToInt32(Math.Floor((pageWidth * 203) / DEFAULT_FONT_WIDTH_IN_DOTS)) - 2;
         }
 
         /// <summary>
