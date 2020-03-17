@@ -22,6 +22,7 @@ namespace BizSpeed.CPLTemplates
         private string H1_FONT = "! U1 SETLP 4 0 47";
         private decimal DEFAULT_FONT_WIDTH_IN_DOTS = 12;
         private int PAGE_WIDTH;
+        private int LEFT_MARGIN = 15;
         int MAX_CHARACTERS;
 
         public XmlToCPLParser()
@@ -41,7 +42,9 @@ namespace BizSpeed.CPLTemplates
             XDocument xmlDoc = XDocument.Load(new StringReader(cleanedXml), LoadOptions.None);
 
             if (!ValidateXml(xmlDoc, out string validationMessage))
+            {
                 throw new FormatException(validationMessage);
+            }
 
             Debug.WriteLine("Print XML: {0}", xmlDoc.ToString());
             var sb = new StringBuilder();
@@ -58,7 +61,11 @@ namespace BizSpeed.CPLTemplates
             if (!Int32.TryParse(pageWithAttribute?.Value ?? "4", out int pageWidth))
                 pageWidth = DEFAULT_PAGE_WIDTH;
 
-            InitPageSettings(pageWidth);
+            var marginAttribute = docElement.Attribute("margin");
+            if (!Int32.TryParse(marginAttribute?.Value ?? "15", out int margin))
+                margin = 15;
+
+            InitPageSettings(Math.Abs(pageWidth), Math.Abs(margin));
 
             sb.Append(WriteDoc());
 
@@ -177,10 +184,10 @@ namespace BizSpeed.CPLTemplates
             return sb.ToString();
         }
 
-        private void InitPageSettings(int pageWidth)
+        private void InitPageSettings(int pageWidth, int margin)
         {
             PAGE_WIDTH = pageWidth;
-
+            LEFT_MARGIN = margin;
             // TODO: Uncomment if "scaling" font to fit smaller page
             //if (pageWidth == 3)
             //{
@@ -189,7 +196,7 @@ namespace BizSpeed.CPLTemplates
             //    DEFAULT_FONT_WIDTH_IN_DOTS = 8;
             //}
 
-            MAX_CHARACTERS = Convert.ToInt32(Math.Floor((pageWidth * 203) / DEFAULT_FONT_WIDTH_IN_DOTS)) - 2;
+            MAX_CHARACTERS = Convert.ToInt32(Math.Floor(((pageWidth * 203) - margin) / DEFAULT_FONT_WIDTH_IN_DOTS)) - 2;
         }
 
         /// <summary>
@@ -201,7 +208,7 @@ namespace BizSpeed.CPLTemplates
         /// <returns></returns>
         private string WriteImage(byte[] imageData, string align, double width)
         {
-            var imageWidthInPixels = (((PAGE_WIDTH * 203) - 60) * width) * .95;
+            var imageWidthInPixels = (((PAGE_WIDTH * 203) - LEFT_MARGIN - 60) * width) * .95;
 
             return GenerateImageString(imageData, align, Convert.ToInt32(imageWidthInPixels));
         }
@@ -228,7 +235,7 @@ namespace BizSpeed.CPLTemplates
 
                 if (align == "center")
                 {
-                    x = Convert.ToInt32(Math.Round(((PAGE_WIDTH * 203f) - 60 - bitmap.Width) / 2, 0));
+                    x = Convert.ToInt32(Math.Round(((PAGE_WIDTH * 203f) - LEFT_MARGIN - 60 - bitmap.Width) / 2, 0));
                 }
 
                 printCommand.Append($"EG {bitmapWidth / 8} {bitmap.Height} {x} 0 ");
@@ -365,6 +372,7 @@ namespace BizSpeed.CPLTemplates
             sb.Append("PRINT").Append(CR);
             sb.Append("! U1 BEGIN-PAGE").Append(CR);
             sb.Append("! U1 JOURNAL").Append(CR);
+            sb.Append($"! U1 LMARGIN {LEFT_MARGIN}").Append(CR);
             sb.Append(DEFAULT_FONT).Append(CR);
             return sb.ToString();
         }

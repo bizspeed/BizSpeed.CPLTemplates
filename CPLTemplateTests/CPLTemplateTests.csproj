@@ -17,10 +17,14 @@
 
   <ItemGroup>
     <None Remove="receipt.xml" />
+    <None Remove="receipt4.xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="receipt.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="**/*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

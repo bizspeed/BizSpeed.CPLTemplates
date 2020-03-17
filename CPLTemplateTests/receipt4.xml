@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <section>
+        <h1>BizSpeed, INC</h1>
+        <text>Depot/Terminal</text>
+        <br/>
+    </section>
+
+    <grid>
+        <columns>
+            <column width="40" />
+            <column width="24" />
+        </columns>
+        <rows>
+            <row>
+                <cell>3050 Royal Blvd South </cell>
+                <cell></cell>
+            </row>
+            <row>
+                <cell>Alpharetta, GA 30022</cell>
+                <cell></cell>
+            </row>
+            <row>
+                <cell>Phone: 678-287-3310</cell>
+                <cell>Salesman: Grant Inscoe</cell>
+            </row>
+            <row>
+                <cell>Order #: ADB1234</cell>
+                <cell>RTA: 2/27/2010 12:00 PM</cell>
+            </row>
+            <row>
+                <cell>PO #: 4321BDA</cell>
+                <cell>RTD: 2/27/2020 1:00 PM</cell>
+            </row>
+            <row>
+                <cell>Driver: van</cell>
+                <cell></cell>
+            </row>
+            <row>
+                <cell>Truck #: TRK-123</cell>
+                <cell></cell>
+            </row>
+            <row>
+                <cell>Position: </cell>
+                <cell></cell>
+            </row>
+        </rows>
+    </grid>
+
+    <br />
+    <section>
+        <text>Notes:</text>
+        <br />
+        <text>These are the order notes</text>
+    </section>
+
+    <br />
+    <br/>
+    <b>Sold to:</b>
+    <br/>
+    <grid>
+        <columns>
+            <column width="40" />
+            <column width="24" />
+        </columns>
+        <rows>
+            <row>
+                <cell>Total Wine</cell>
+                <cell>Acct #: TW1234</cell>
+            </row>
+            <row>
+                <cell>1234 North Point Pkwy </cell>
+                <cell></cell>
+            </row>
+            <row>
+                <cell>Alpharetta, GA 30022</cell>
+                <cell></cell>
+            </row>
+            <row>
+                <cell>john@totalwine.com</cell>
+                <cell></cell>
+            </row>
+        </rows>
+    </grid>
+
+    <br />
+    <br />
+    <section>
+        <b>Delivered To:</b>
+        <br />
+        <text>Total Wine</text>
+        <br />
+        <text>1234 North Point Pkwy </text>
+        <br />
+        <text>Alpharetta, GA 30022</text>
+        <br />
+    </section>
+    <br/>
+
+    <grid>
+        <columns>
+            <column width="28" />
+            <column width="10" />
+            <column width="13" />
+            <column width="13" />
+        </columns>
+
+        <rows>
+            <row>
+                <cell>Product</cell>
+                <cell align="right">UOM</cell>
+                <cell align="right">Ordered</cell>
+                <cell align="right">Delivered</cell>
+            </row>
+        </rows>
+    </grid>
+    <br />
+
+    <textline character="-" width="63" />
+
+    <grid>
+        <columns>
+            <column width="28" />
+            <column width="10" />
+            <column width="13" />
+            <column width="13" />
+        </columns>
+
+        <rows>
+            <row>
+                <cell>MER</cell>
+                <cell align="right">Ea</cell>
+                <cell align="right">10.0</cell>
+                <cell align="right">10.0</cell>
+            </row>
+        </rows>
+    </grid>
+    <br />
+
+    <grid>
+        <columns>
+            <column width="64" />
+        </columns>
+        <rows>
+            <row>
+                <cell>A plummy jammy merlot</cell>
+            </row>
+        </rows>
+    </grid>
+
+    <br />
+    <br />
+    <grid>
+        <columns>
+            <column width="28" />
+            <column width="10" />
+            <column width="13" />
+            <column width="13" />
+        </columns>
+
+        <rows>
+            <row>
+                <cell>Product</cell>
+                <cell align="right">UOM</cell>
+                <cell align="right">Ordered</cell>
+                <cell align="right">Delivered</cell>
+            </row>
+        </rows>
+    </grid>
+    <br />
+
+    <textline character="-" width="63" />
+
+    <grid>
+        <columns>
+            <column width="28" />
+            <column width="10" />
+            <column width="13" />
+            <column width="13" />
+        </columns>
+
+        <rows>
+            <row>
+                <cell>PINOT</cell>
+                <cell align="right">Ea</cell>
+                <cell align="right">15.0</cell>
+                <cell align="right">15.0</cell>
+            </row>
+        </rows>
+    </grid>
+    <br />
+
+    <grid>
+        <columns>
+            <column width="64" />
+        </columns>
+        <rows>
+            <row>
+                <cell>A plummy jammy pinot</cell>
+            </row>
+        </rows>
+    </grid>
+
+    <br />
+    <br />
+
+    <br />
+    <text>Signed by: Bob</text>
+    <br/>
+    <br />
+    <section>
+        <text>Powered by BizSpeed (C)2020</text>
+        <br />
+        <text>www.bizspeed.com</text>
+    </section>
+</doc>
