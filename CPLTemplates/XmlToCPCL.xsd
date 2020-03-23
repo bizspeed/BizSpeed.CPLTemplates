@@ -48,7 +48,7 @@
             </xs:element>
             <xs:element name="rows">
                 <xs:complexType>
-                <xs:sequence maxOccurs="unbounded" minOccurs="1">
+                <xs:sequence maxOccurs="unbounded" minOccurs="0">
                     <xs:element type="rowType" name="row" />
                 </xs:sequence>
                 </xs:complexType>
