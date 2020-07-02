@@ -16,7 +16,15 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<Title>BizSpeed.CPLTemplates</Title>
 	<Description>Library to translate from XML to CPCL</Description>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseAndroidTest|AnyCPU' ">
     <IntermediateOutputPath>obj\Release\netstandard2.0</IntermediateOutputPath>
     <DebugType>portable</DebugType>
