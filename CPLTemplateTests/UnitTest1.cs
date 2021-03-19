@@ -55,5 +55,22 @@ namespace CPLTemplateTests
 				Assert.Fail($"Translation failed: {ex}");
 			}
 		}
+		[TestMethod]
+		public void DocumentWithSpecialCharacters_WhenTranslated_ReturnsValidCPCL()
+        {
+			var receiptText = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "SpecialCharacters.xml"));
+			var translator = new BizSpeed.CPLTemplates.XmlToCPLParser();
+
+			try
+			{
+				var cpl = translator.Translate(receiptText);
+				Assert.IsTrue(cpl.StartsWith("! U1 setvar \"device.languages\" \"line_print\""));
+			}
+			catch (Exception ex)
+			{
+				Assert.Fail($"Translation failed: {ex}");
+			}
+
+		}
 	}
 }
