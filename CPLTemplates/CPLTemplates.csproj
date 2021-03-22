@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<RootNamespace>BizSpeed.CPLTemplates</RootNamespace>
 	<PackOnBuild>true</PackOnBuild>
 	<PackageId>BizSpeed.CPLTemplates</PackageId>
-	<PackageVersion>2.0.0</PackageVersion>
+	<PackageVersion>1.5.1</PackageVersion>
 	<Authors>BizSpeed</Authors>
 	<Copyright>BizSpeed. Inc.</Copyright>
 	<Owners>BizSpeed, Inc.</Owners>
@@ -19,7 +19,6 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Configurations>ReleaseAndroidTest;Debug;Release</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,7 +37,7 @@
     <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="2.80.2" />
+    <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
   <ItemGroup>
