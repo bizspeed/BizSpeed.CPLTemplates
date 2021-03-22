@@ -89,12 +89,7 @@ namespace BizSpeed.CPLTemplates
                     if (imageData.Length == 0)
                         continue;
 
-                    var alignAttr = element.Attribute("align");
-                    var alignVal = alignAttr?.Value;
-                    var align = (alignVal ?? "center").ToLower();
-
-                    if (align != "left" || align != "center")
-                        align = "center";
+                    var align = EvaluateAlignment(element.Attribute("align"), "center");
 
                     var widthAttr = element.Attribute("width"); // expressed as a percentage of the total page width
                     var widthVal = widthAttr?.Value;
@@ -118,7 +113,31 @@ namespace BizSpeed.CPLTemplates
 
                 if (elementName == "text")
                 {
-                    sb.Append(WebUtility.HtmlDecode(element.Value));
+                    int lineWidth = MAX_CHARACTERS;
+
+                    var align = EvaluateAlignment(element.Attribute("align"), "left");
+
+                    int indent = 0;
+
+                    switch (align)
+                    {
+                        case "left":
+                            indent = 0;
+                            sb.Append(WebUtility.HtmlDecode(element.Value));
+                            break;
+                        case "right":
+                            indent = lineWidth - element.Value.Length;
+                            sb.Append(WebUtility.HtmlDecode(element.Value).PadLeft(lineWidth));
+                            break;
+                        case "center":
+                            indent = Convert.ToInt32((lineWidth - element.Value.Length) / 2);
+                            sb.Append(WebUtility.HtmlDecode(element.Value).PadLeft(indent + element.Value.Length));
+                            break;
+                        default:
+                            sb.Append(WebUtility.HtmlDecode(element.Value));
+                            break;
+                    }
+
                     continue;
                 }
 
@@ -182,6 +201,17 @@ namespace BizSpeed.CPLTemplates
             sb.Append(WriteDocEnd()).Append(CR);
             Debug.WriteLine(sb.ToString());
             return sb.ToString();
+        }
+
+        private string EvaluateAlignment(XAttribute alignAttr, string defaultAlignment = "left")
+        {
+            var alignVal = alignAttr?.Value;
+            var align = (alignVal ?? defaultAlignment).ToLower();
+
+            if (align != "left" && align != "center" && align != "right")
+                align = defaultAlignment;
+
+            return align;
         }
 
         private void InitPageSettings(int pageWidth, int margin)
@@ -569,17 +599,7 @@ namespace BizSpeed.CPLTemplates
                     }
 
                     var lineWidth = Convert.ToInt32(Math.Floor(DEFAULT_FONT_WIDTH_IN_DOTS * width));
-                    var align = "left";
-
-                    if (cell.Attributes().Any(a => a.Name == "align"))
-                    {
-                        align = cell.Attributes("align").First().Value;
-
-                        if (align != "left" && align != "right")
-                        {
-                            align = "left";
-                        }
-                    }
+                    var align = EvaluateAlignment(cell.Attribute("align"), "left");
 
                     if (cell.Elements().Count() == 0)
                     {
@@ -641,12 +661,18 @@ namespace BizSpeed.CPLTemplates
                 cleanText = cleanText.Substring(0, substringLength);
             }
 
-            if (align == "right")
+            switch (align)
             {
-                return cleanText.PadLeft(width);
+                case "left":
+                    return cleanText.PadRight(width);
+                case "right":
+                    return cleanText.PadLeft(width);
+                case "center":
+                    var indent = Convert.ToInt32((width - cleanText.Length) / 2);
+                    return cleanText.PadLeft(indent + cleanText.Length);
+                default:
+                    return cleanText.PadRight(width);
             }
-
-            return cleanText.PadRight(width);
         }
 
         protected string LoadTemplateFromEmbeddedResource(string resourceName)
