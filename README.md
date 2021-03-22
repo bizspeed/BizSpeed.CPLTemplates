@@ -3,11 +3,12 @@
 ## Document Schema
 ### doc
 ```xml
-<doc [pagewidth="x"]>
+<doc [pagewidth="x"] [version="y"]>
 ...
 </doc>
 ```
-- width: page width in inches
+- pagewidth: page width in inches
+- version: an arbitrary version string
 
 This is the container for all other printable elements. In general, the top level elements can appear in any order. It sets up the page width, the default font, the form feed mechanism (JOURNAL), and begins the first "page"
 
@@ -43,8 +44,10 @@ This tag simply emits a newline to show a blank line
 
 ### text
 ```xml
-<text>ipsum lorem</text>
+<text [align="left|center|right"]>ipsum lorem</text>
 ```
+
+- align: whether to left, center, or right align the text in its container
 
 This tag just emits the text contained in the tag
 
@@ -88,7 +91,7 @@ This tag will emit a "line" of characters
     </columns>
     <rows>
         <row>
-            <cell [align="left|right"] [colspan="n"]>...</cell>
+            <cell [align="left|center|right"] [colspan="n"]>...</cell>
             ...
         </row>
     </rows>
