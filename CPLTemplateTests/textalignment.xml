@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc>
+    <section>
+        <text align="left">align left</text><br />
+        <text align="center">align center</text><br />
+        <text align="right">align right</text><br />
+    </section>
+    <grid>
+        <columns>
+            <column width="21" />
+            <column width="21" />
+            <column width="21" />
+        </columns>
+        <rows>
+            <row>
+                <cell align="left">left</cell>
+                <cell align="center">center</cell>
+                <cell align="right">right</cell>
+            </row>
+            <row>
+                <cell colspan="3" align="center">colspan center</cell>
+            </row>
+            <row>
+                <cell colspan="3" align="right">colspan right</cell>
+            </row>
+        </rows>
+    </grid>
+</doc>
