@@ -1,34 +1,56 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPLTemplates", "CPLTemplates\CPLTemplates.csproj", "{3CE62897-FF33-4551-930A-3820DCB92DEB}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPLTemplates", "CPLTemplates\CPLTemplates.csproj", "{3CE62897-FF33-4551-930A-3820DCB92DEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{84170839-8547-4496-9430-096152DA89C0}"
 	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
 		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPLTemplateTests", "CPLTemplateTests\CPLTemplateTests.csproj", "{9EE146EE-64DB-4987-938B-095AE6B8E302}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPLTemplates.Test", "CPLTemplates.Test\CPLTemplates.Test.csproj", "{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|anycpu = Debug|anycpu
+		Release|Any CPU = Release|Any CPU
 		Release|anycpu = Release|anycpu
 		ReleaseAndroidTest|Any CPU = ReleaseAndroidTest|Any CPU
+		ReleaseAndroidTest|anycpu = ReleaseAndroidTest|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Debug|anycpu.ActiveCfg = Debug|Any CPU
 		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{3CE62897-FF33-4551-930A-3820DCB92DEB}.Release|anycpu.Build.0 = Release|Any CPU
 		{3CE62897-FF33-4551-930A-3820DCB92DEB}.ReleaseAndroidTest|Any CPU.ActiveCfg = ReleaseAndroidTest|Any CPU
 		{3CE62897-FF33-4551-930A-3820DCB92DEB}.ReleaseAndroidTest|Any CPU.Build.0 = ReleaseAndroidTest|Any CPU
-		{9EE146EE-64DB-4987-938B-095AE6B8E302}.Debug|anycpu.ActiveCfg = Debug|Any CPU
-		{9EE146EE-64DB-4987-938B-095AE6B8E302}.Debug|anycpu.Build.0 = Debug|Any CPU
-		{9EE146EE-64DB-4987-938B-095AE6B8E302}.Release|anycpu.ActiveCfg = Release|Any CPU
-		{9EE146EE-64DB-4987-938B-095AE6B8E302}.Release|anycpu.Build.0 = Release|Any CPU
-		{9EE146EE-64DB-4987-938B-095AE6B8E302}.ReleaseAndroidTest|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EE146EE-64DB-4987-938B-095AE6B8E302}.ReleaseAndroidTest|Any CPU.Build.0 = Debug|Any CPU
+		{3CE62897-FF33-4551-930A-3820DCB92DEB}.ReleaseAndroidTest|anycpu.ActiveCfg = ReleaseAndroidTest|Any CPU
+		{3CE62897-FF33-4551-930A-3820DCB92DEB}.ReleaseAndroidTest|anycpu.Build.0 = ReleaseAndroidTest|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.Release|anycpu.Build.0 = Release|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.ReleaseAndroidTest|Any CPU.ActiveCfg = Release|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.ReleaseAndroidTest|Any CPU.Build.0 = Release|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.ReleaseAndroidTest|anycpu.ActiveCfg = Release|Any CPU
+		{7260D81D-336E-4ED3-A5E1-FF2E5004CB1A}.ReleaseAndroidTest|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E00F8E1-EF12-4CDD-A810-1A18AF0ADBA5}
 	EndGlobalSection
 EndGlobal
