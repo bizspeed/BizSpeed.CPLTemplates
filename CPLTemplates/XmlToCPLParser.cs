@@ -483,7 +483,7 @@ namespace BizSpeed.CPLTemplates
 
                 if (elementName == "text")
                 {
-                    sb.Append(WebUtility.HtmlDecode(item.Value));
+                    sb.Append(WritePaddedText(item.Value, MAX_CHARACTERS, EvaluateAlignment(item.Attribute("align"), "left")));
                     continue;
                 }
 
@@ -669,7 +669,9 @@ namespace BizSpeed.CPLTemplates
                     return cleanText.PadLeft(width);
                 case "center":
                     var indent = Convert.ToInt32((width - cleanText.Length) / 2);
-                    return cleanText.PadLeft(indent + cleanText.Length);
+                    var paddedText = cleanText.PadLeft(indent + cleanText.Length);
+                    paddedText = paddedText.PadRight(width);
+                    return paddedText;
                 default:
                     return cleanText.PadRight(width);
             }
