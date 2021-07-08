@@ -24,14 +24,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="Alba.CsConsoleFormat-NoXaml" Version="1.0.0" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseAndroidTest|AnyCPU' ">
-    <IntermediateOutputPath>obj\Release\netstandard2.0\netstandard2.1</IntermediateOutputPath>
+    <IntermediateOutputPath>obj\Release\netstandard2.0\netstandard2.1\netstandard2.1</IntermediateOutputPath>
     <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\ReleaseAndroidTest\netstandard2.0\netstandard2.1</OutputPath>
+    <OutputPath>bin\ReleaseAndroidTest\netstandard2.0\netstandard2.1\netstandard2.1</OutputPath>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile></DocumentationFile>

@@ -9,7 +9,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
-using Alba.CsConsoleFormat;
 using BizSpeed.CPLTemplates.Extensions;
 using SkiaSharp;
 
@@ -121,34 +120,6 @@ namespace BizSpeed.CPLTemplates
                     List<string> lines = decodedLine.Wrap(lineWidth);
 
                     var align = EvaluateAlignment(element.Attribute("align"), "left");
-
-                    //Align textAlign = Align.Left;
-
-                    //switch (align)
-                    //{
-                    //    case "left":
-                    //        textAlign = Align.Left;
-                    //        break;
-                    //    case "center":
-                    //        textAlign = Align.Center;
-                    //        break;
-                    //    case "right":
-                    //        textAlign = Align.Right;
-                    //        break;
-                    //    default:
-                    //        textAlign = Align.Left;
-                    //        break;
-                    //}
-
-                    //var doc = new Document();
-
-                    //doc.Children.Add(new Div(decodedLine) { Align = textAlign, TextWrap = TextWrap.WordWrap });
-
-                    //var bounds = new Rect(0, 0, lineWidth, Size.Infinity);
-
-                    //var formattedText = ConsoleRenderer.RenderDocumentToText(doc, new TextRenderTarget(), bounds);
-
-                    //sb.Append(formattedText);
 
                     int index = 0;
                     foreach (var line in lines)
