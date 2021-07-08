@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BizSpeed.CPLTemplates.Extensions
 {
@@ -79,6 +80,28 @@ namespace BizSpeed.CPLTemplates.Extensions
                 var value = Convert.ToInt32(hex, 16);
                 yield return Char.ConvertFromUtf32(value);
             }
+        }
+
+		public static List<string> Wrap(this string text, int partLength)
+		{
+            List<string> lines =
+                text
+                    .Split(' ')
+                    .Aggregate(new[] { "" }.ToList(), (a, x) =>
+                    {
+                        var last = a[a.Count - 1];
+                        if ((last + " " + x).Length > partLength)
+                        {
+                            a.Add(x);
+                        }
+                        else
+                        {
+                            a[a.Count - 1] = (last + " " + x).Trim();
+                        }
+                        return a;
+                    });
+
+            return lines;
         }
 	}
 }
