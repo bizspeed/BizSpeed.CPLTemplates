@@ -9,6 +9,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using Alba.CsConsoleFormat;
 using BizSpeed.CPLTemplates.Extensions;
 using SkiaSharp;
 
@@ -115,27 +116,68 @@ namespace BizSpeed.CPLTemplates
                 {
                     int lineWidth = MAX_CHARACTERS;
 
+                    var decodedLine = WebUtility.HtmlDecode(element.Value);
+
+                    List<string> lines = decodedLine.Wrap(lineWidth);
+
                     var align = EvaluateAlignment(element.Attribute("align"), "left");
 
-                    int indent = 0;
+                    //Align textAlign = Align.Left;
 
-                    switch (align)
+                    //switch (align)
+                    //{
+                    //    case "left":
+                    //        textAlign = Align.Left;
+                    //        break;
+                    //    case "center":
+                    //        textAlign = Align.Center;
+                    //        break;
+                    //    case "right":
+                    //        textAlign = Align.Right;
+                    //        break;
+                    //    default:
+                    //        textAlign = Align.Left;
+                    //        break;
+                    //}
+
+                    //var doc = new Document();
+
+                    //doc.Children.Add(new Div(decodedLine) { Align = textAlign, TextWrap = TextWrap.WordWrap });
+
+                    //var bounds = new Rect(0, 0, lineWidth, Size.Infinity);
+
+                    //var formattedText = ConsoleRenderer.RenderDocumentToText(doc, new TextRenderTarget(), bounds);
+
+                    //sb.Append(formattedText);
+
+                    int index = 0;
+                    foreach (var line in lines)
                     {
-                        case "left":
-                            indent = 0;
-                            sb.Append(WebUtility.HtmlDecode(element.Value));
-                            break;
-                        case "right":
-                            indent = lineWidth - element.Value.Length;
-                            sb.Append(WebUtility.HtmlDecode(element.Value).PadLeft(lineWidth));
-                            break;
-                        case "center":
-                            indent = Convert.ToInt32((lineWidth - element.Value.Length) / 2);
-                            sb.Append(WebUtility.HtmlDecode(element.Value).PadLeft(indent + element.Value.Length));
-                            break;
-                        default:
-                            sb.Append(WebUtility.HtmlDecode(element.Value));
-                            break;
+                        int indent = 0;
+
+                        switch (align)
+                        {
+                            case "left":
+                                indent = 0;
+                                sb.Append(line);
+                                break;
+                            case "right":
+                                indent = lineWidth - element.Value.Length;
+                                sb.Append(line.PadLeft(lineWidth));
+                                break;
+                            case "center":
+                                indent = Convert.ToInt32((lineWidth - line.Length) / 2);
+                                sb.Append(line.PadLeft(indent + line.Length));
+                                break;
+                            default:
+                                sb.Append(line);
+                                break;
+                        }
+
+                        if (index < lines.Count - 1)
+                            sb.Append(CR);
+
+                        index++;
                     }
 
                     continue;
@@ -155,7 +197,6 @@ namespace BizSpeed.CPLTemplates
 
                 if (elementName == "line")
                 {
-
                     var lineWidth = PAGE_WIDTH * 203;
 
                     if (element.Attributes().Any(a => a.Name == "width"))

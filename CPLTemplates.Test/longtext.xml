@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doc>
+  <text align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+  <br />
+  <text align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+  <br />
+  <text align="right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+  <br />
+</doc>

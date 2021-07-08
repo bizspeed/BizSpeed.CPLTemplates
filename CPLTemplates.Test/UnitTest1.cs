@@ -65,5 +65,11 @@ namespace CPLTemplates.Test
 			TranslateDocument(receiptText);
 		}
 
+		[Fact]
+		public void DocumentWithLongText_WhenTranslated_ReturnsValidCPCL()
+        {
+			var receiptText = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "longtext.xml"));
+			TranslateDocument(receiptText);
+		}
 	}
 }

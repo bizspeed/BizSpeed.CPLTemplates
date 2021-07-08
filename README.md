@@ -49,7 +49,7 @@ This tag simply emits a newline to show a blank line
 
 - align: whether to left, center, or right align the text in its container
 
-This tag just emits the text contained in the tag
+This tag just emits the text contained in the tag. It will wrap the text based on the evaluated line width and preserve the alignment.
 
 ### b
 ```xml
