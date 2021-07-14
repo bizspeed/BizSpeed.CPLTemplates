@@ -115,41 +115,7 @@ namespace BizSpeed.CPLTemplates
                 {
                     int lineWidth = MAX_CHARACTERS;
 
-                    var decodedLine = WebUtility.HtmlDecode(element.Value);
-
-                    List<string> lines = decodedLine.Wrap(lineWidth);
-
-                    var align = EvaluateAlignment(element.Attribute("align"), "left");
-
-                    int index = 0;
-                    foreach (var line in lines)
-                    {
-                        int indent = 0;
-
-                        switch (align)
-                        {
-                            case "left":
-                                indent = 0;
-                                sb.Append(line);
-                                break;
-                            case "right":
-                                indent = lineWidth - element.Value.Length;
-                                sb.Append(line.PadLeft(lineWidth));
-                                break;
-                            case "center":
-                                indent = Convert.ToInt32((lineWidth - line.Length) / 2);
-                                sb.Append(line.PadLeft(indent + line.Length));
-                                break;
-                            default:
-                                sb.Append(line);
-                                break;
-                        }
-
-                        if (index < lines.Count - 1)
-                            sb.Append(CR);
-
-                        index++;
-                    }
+                    sb.Append(WritePaddedText(element.Value, lineWidth, EvaluateAlignment(element.Attribute("align"), "left")));
 
                     continue;
                 }
@@ -615,7 +581,7 @@ namespace BizSpeed.CPLTemplates
 
                     if (cell.Elements().Count() == 0)
                     {
-                        sb.Append(WritePaddedText(cell.Value, width, align));
+                        sb.Append(WritePaddedText(cell.Value, width, align, false));
                     }
                     else
                     {
@@ -623,7 +589,7 @@ namespace BizSpeed.CPLTemplates
 
                         if (childElement.Name == "text")
                         {
-                            sb.Append(WritePaddedText(childElement.Value, width, align));
+                            sb.Append(WritePaddedText(childElement.Value, width, align, false));
                         }
                         else if (childElement.Name == "b")
                         {
@@ -658,35 +624,54 @@ namespace BizSpeed.CPLTemplates
             return sb.ToString();
         }
 
-        private string WritePaddedText(string text, int width, string align = "left")
+        private string WritePaddedText(string text, int lineWidth, string align = "left", bool wrap = true)
         {
-            var cleanText = WebUtility.HtmlDecode(text);
+            var sb = new StringBuilder();
 
-            if (cleanText.Length > width)
+            var decodedLine = WebUtility.HtmlDecode(text);
+
+            List<string> lines = new List<string> { text };
+
+            if (wrap)
+                lines = decodedLine.Wrap(lineWidth);
+
+            int index = 0;
+            foreach (var line in lines)
             {
-                var substringLength = width - 1;
-                if (substringLength < 0)
+                var textLine = line;
+
+                if (!wrap)
+                    textLine = line.SafeSubstring(lineWidth);
+
+                int indent = 0;
+
+                switch (align)
                 {
-                    substringLength = 0;
+                    case "left":
+                        indent = 0;
+                        sb.Append(textLine);
+                        break;
+                    case "right":
+                        indent = lineWidth - textLine.Length;
+                        sb.Append(line.PadLeft(lineWidth));
+                        break;
+                    case "center":
+                        indent = Convert.ToInt32((lineWidth - textLine.Length) / 2);
+                        sb.Append(line.PadLeft(indent + textLine.Length));
+                        break;
+                    default:
+                        indent = 0;
+                        sb.Append(textLine);
+                        break;
                 }
 
-                cleanText = cleanText.Substring(0, substringLength);
+                if ((index < lines.Count - 1) && wrap)
+                    sb.Append(CR);
+
+                index++;
             }
 
-            switch (align)
-            {
-                case "left":
-                    return cleanText.PadRight(width);
-                case "right":
-                    return cleanText.PadLeft(width);
-                case "center":
-                    var indent = Convert.ToInt32((width - cleanText.Length) / 2);
-                    var paddedText = cleanText.PadLeft(indent + cleanText.Length);
-                    paddedText = paddedText.PadRight(width);
-                    return paddedText;
-                default:
-                    return cleanText.PadRight(width);
-            }
+            return sb.ToString();
         }
 
         protected string LoadTemplateFromEmbeddedResource(string resourceName)
