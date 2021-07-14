@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
+  <text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+  <br />
   <text align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
   <br />
   <text align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
   <br />
   <text align="right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+  <br />
+  <section>
+      <text>In a Section</text>
+      <br />
+      <text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+      <br />
+      <text align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+      <br />
+      <text align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+      <br />
+      <text align="right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text>
+      <br />
+  </section>
+  <text>In a grid</text><br />
+  <grid>
+        <columns>
+            <column width="25" />
+            <column width="38" />
+        </columns>
+        <rows>
+            <row>
+                <cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</cell>
+                <cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</cell>
+            </row>
+            <row>
+                <cell><text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text></cell>
+                <cell><text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ante tortor, aliquet vitae nisi et.</text></cell>
+            </row>
+        </rows>
+  </grid>
   <br />
 </doc>
