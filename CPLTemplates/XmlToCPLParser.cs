@@ -579,9 +579,11 @@ namespace BizSpeed.CPLTemplates
                     var lineWidth = Convert.ToInt32(Math.Floor(DEFAULT_FONT_WIDTH_IN_DOTS * width));
                     var align = EvaluateAlignment(cell.Attribute("align"), "left");
 
+                    var cellText = "";
+
                     if (cell.Elements().Count() == 0)
                     {
-                        sb.Append(WritePaddedText(cell.Value, width, align, false));
+                        cellText = WritePaddedText(cell.Value, width, align, false);
                     }
                     else
                     {
@@ -589,21 +591,26 @@ namespace BizSpeed.CPLTemplates
 
                         if (childElement.Name == "text")
                         {
-                            sb.Append(WritePaddedText(childElement.Value, width, align, false));
+                            cellText = WritePaddedText(childElement.Value, width, align, false);
                         }
                         else if (childElement.Name == "b")
                         {
-                            sb.Append(WriteB(childElement.Value, width, align));
+                            cellText = WriteB(childElement.Value, width, align);
                         }
                         else if (childElement.Name == "line")
                         {
-                            sb.Append(WriteLine(lineWidth));
+                            cellText = WriteLine(lineWidth);
                         }
                         else if (childElement.Name=="textline")
                         {
-                            sb.Append(WriteTextLine(width, childElement.Attribute("character")?.Value ?? "-"));
+                            cellText = WriteTextLine(width, childElement.Attribute("character")?.Value ?? "-");
                         }
                     }
+
+                    if (cellText.Length < width)
+                        cellText = cellText.PadRight(width);
+
+                    sb.Append(cellText);
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
